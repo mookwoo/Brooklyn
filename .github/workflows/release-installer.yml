@@ -2,6 +2,11 @@ name: Build and Upload Installer (macOS)
 
 on:
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to attach the installer to (e.g., v2.2.0)'
+        required: false
+        default: ''
   release:
     types: [published]
 
@@ -29,11 +34,11 @@ jobs:
           path: Installer/out/*.pkg
 
       - name: Attach to GitHub Release
-        if: github.event_name == 'release'
+        if: ${{ github.event_name == 'release' || github.event.inputs.tag != '' }}
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: Installer/out/*.pkg
-          tag: ${{ github.ref_name }}
+          tag: ${{ github.event_name == 'release' && github.ref_name || github.event.inputs.tag }}
           overwrite: true
           file_glob: true
