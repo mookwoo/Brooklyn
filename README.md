@@ -25,9 +25,9 @@
 
 ## Installation 📦
 
-Independently of how you install **Brooklyn**, please **close your System Preferences**.
+Independently of how you install **Brooklyn**, please close System Preferences (macOS ≤ Monterey) or System Settings (macOS Ventura and later) while installing.
 
-Screen savers can be set programmatically with this Terminal command :
+Screen savers can be set programmatically with this Terminal command:
 
 ```shell
 defaults -currentHost write com.apple.screensaver moduleDict -dict moduleName Brooklyn path "$HOME/Library/Screen Savers/Brooklyn.saver"
@@ -35,18 +35,18 @@ defaults -currentHost write com.apple.screensaver moduleDict -dict moduleName Br
 
 ### Manual :hand:
 
-1. [Click here to Download](https://github.com/pedrommcarrasco/Brooklyn/releases/download/2.1.0/Brooklyn.saver.zip)
+1. [Click here to Download](https://github.com/pedrommcarrasco/Brooklyn/releases/download/2.2.0/Brooklyn.saver.zip)
 2. Open **Brooklyn.saver** (double click)
-3. `"Brooklyn.saver" can't be opened because it is from an unidentified developer` will appear, press `OK`
-4. Open `Preferences`
-5. Select `Security & Privacy`
-6. Select `General`
-7. On the bottom side, select `Open Anyway`
+3. If you see `"Brooklyn.saver" can't be opened because it is from an unidentified developer`, press `OK`
+4. Open System Preferences (or System Settings on Ventura+)
+5. Go to `Security & Privacy` → `General` (or `Privacy & Security` on Ventura+)
+6. Click `Open Anyway` for Brooklyn
 
 ### Homebrew 🍺
 
 1. Open terminal
 2. Enter `brew install --cask brooklyn --no-quarantine`
+    - If Gatekeeper still blocks it, open System Settings → Privacy & Security and choose `Open Anyway` for Brooklyn.
 
 ## Uninstallation 🗑️
 
@@ -62,16 +62,16 @@ defaults -currentHost write com.apple.screensaver moduleDict -dict moduleName Br
 
 ## Compatibility 🔧
 
-Requires OS X El Capitan (10.11) or above.
+Works on modern macOS versions, including recent releases. Minimum macOS is now 10.13 (High Sierra). If you’re on the latest macOS (Tahoe), installation via the steps above should work the same; if you hit a security prompt loop, use the troubleshooting command below.
 
 ## Troubleshooting 🤕
 
-The Brooklyn screen saver can be blocked by the system as a malicious software. Sometimes on macOS Big Sur clicking `Open Anyway` in `Security & Privacy` is not fixing the issue.  
+The Brooklyn screen saver can be blocked by Gatekeeper. Sometimes clicking `Open Anyway` is not enough on some macOS versions.  
 
-To bypass this quarantine made by apple, you can use this command in your terminal :
+To remove the quarantine attribute, run this command in your terminal:
 
 ```shell
-sudo xattr -d com.apple.quarantine ~/"Library/Screen Savers/Brooklyn.saver"
+sudo xattr -dr com.apple.quarantine "$HOME/Library/Screen Savers/Brooklyn.saver"
 ```
 
 ## Support Brooklyn ❤️
