@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+
+# Refresh Screen Saver preferences so Brooklyn appears immediately
+/usr/bin/killall -KILL cfprefsd 2>/dev/null || true
+
+# Print next steps
+/bin/echo "Brooklyn has been installed. Open System Settings > Screen Saver to select it."
+
+exit 0

@@ -23,22 +23,22 @@
 
 ## 설치 📦
 
-**Brooklyn**을 어떤 방법으로 설치하든지 간에 **시스템 환경설정을 꼭 닫아주세요**
+**Brooklyn**을 어떤 방법으로 설치하든지 간에 설치하는 동안 시스템 환경설정(몬터레이 이하) 또는 시스템 설정(벤투라 이상)을 닫아주세요.
 
 ### 수동 :hand:
 
-1. [다운로드하려면 여기를 클릭하세요](https://github.com/pedrommcarrasco/Brooklyn/releases/download/2.0.1/Brooklyn.saver.zip)
+1. [다운로드하려면 여기를 클릭하세요](https://github.com/pedrommcarrasco/Brooklyn/releases/download/2.2.0/Brooklyn.saver.zip)
 2. **Brooklyn.saver**을 여세요 (더블 클릭)
-3. `'Brooklyn.saver'은(는) 확인되지 않은 개발자가 배포했기 때문에 열 수 없습니다.`라는 메시지가 표시되면, `승인`을 클릭하세요
-4. `시스템 환경설정`을 여세요
-5. `보안 및 개인 정보 보호`를 선택하세요
-6. `일반`을 선택하세요
-7. 아래쪽에 있는 `확인 없이 열기`를 선택하세요
+3. `'Brooklyn.saver'은(는) 확인되지 않은 개발자가 배포했기 때문에 열 수 없습니다.`라는 메시지가 보이면, `확인`을 클릭하세요
+4. 시스템 환경설정(또는 Ventura 이상에서는 시스템 설정)을 여세요
+5. `보안 및 개인 정보 보호` → `일반`(Ventura 이상에서는 `개인 정보 보호 및 보안`)
+6. Brooklyn 항목에서 `열기` 또는 `Open Anyway`를 클릭하세요
 
 ### Homebrew 🍺
 
 1. 터미널을 실행하세요
-2. `brew cask install brooklyn`을 입력하세요
+2. `brew install --cask brooklyn --no-quarantine`을 입력하세요
+    - Gatekeeper가 계속 차단하면, 시스템 설정 → 개인 정보 보호 및 보안에서 Brooklyn에 대해 `Open Anyway`를 선택하세요.
 
 ## 제거 🗑️
 
@@ -54,7 +54,17 @@
 
 ## 호환성 🔧
 
-OS X El Capitan (10.11) 또는 그 이상을 필요로 합니다.
+최신 macOS 버전(최근 릴리스 포함)에서 동작합니다. 최소 요구 사항은 이제 macOS High Sierra (10.13)입니다. 최신 macOS(Tahoe)에서도 위 설치 절차로 동일하게 동작해야 하며, 보안 경고가 반복되면 아래 문제 해결 명령을 사용하세요.
+
+## 문제 해결 🤕
+
+Brooklyn 화면 보호기는 Gatekeeper에 의해 차단될 수 있습니다. 일부 macOS 버전에서는 `Open Anyway`를 클릭해도 충분하지 않을 수 있습니다.
+
+격리(quarantine) 속성을 제거하려면 터미널에서 다음 명령을 실행하세요:
+
+```shell
+sudo xattr -dr com.apple.quarantine "$HOME/Library/Screen Savers/Brooklyn.saver"
+```
 
 ## Brooklyn 지원 ❤️
 
