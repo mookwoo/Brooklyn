@@ -994,7 +994,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 2.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = oedrommcarrasco.brooklyn;
+				PRODUCT_BUNDLE_IDENTIFIER = pedrommcarrasco.brooklyn;
 				PRODUCT_NAME = Brooklyn;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
