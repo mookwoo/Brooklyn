@@ -1,4 +1,6 @@
 name: Build and Upload Installer (macOS)
+permissions:
+  contents: write
 
 on:
   workflow_dispatch:
