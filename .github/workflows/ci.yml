@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ master, main ]
+
+permissions:
+  contents: read
+
+jobs:
+  build-macos:
+    name: Build (macOS)
+    runs-on: macos-14
+
+    env:
+      XCODE_PROJECT: Brooklyn.xcodeproj
+      XCODE_SCHEME: Brooklyn   
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show runner & Xcode info
+        run: |
+          sw_vers
+          xcodebuild -version
+          xcodebuild -list -project "$XCODE_PROJECT" || true
+
+      - name: Build
+        run: |
+          set -euo pipefail
+          xcodebuild \
+            -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            -configuration Release \
+            -destination 'platform=macOS' \
+            CODE_SIGNING_ALLOWED=NO \
+            clean build
